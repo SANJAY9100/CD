@@ -1,0 +1,99 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+int n,i=0;
+char s[20];
+void E(void);
+void E1(void);
+void T(void);
+void T1(void);
+void F(void);
+void error(void);
+void main()
+{
+clrscr();
+printf("given grammer is:");
+printf("\n E->TE1");
+printf("\n T->+TE1");
+printf("\n T->FT1");
+printf("\n T->+FT1/#  \n F-> (E) \n F->d");
+printf("\n enter the sting do u want to parse");
+scanf("%s",&s);
+E();
+if(s[i]==NULL)
+{
+printf("string is valid");
+}
+else
+{
+printf("string is invalid");
+}
+getch();
+}
+
+void E()
+{
+T();
+E1();
+}
+
+
+void E1()
+{
+if(s[i]=='+')
+{
+i++;
+T();
+E1();
+}
+else
+{
+printf(" ");
+}
+}
+
+
+void T()
+{
+F();
+T1();
+}
+
+void T1()
+{
+if(s[i]=='*')
+{
+i++;
+F();
+T1();
+}
+else
+{
+printf(" ");
+}
+}
+void F()
+{
+if(s[i]=='(')
+{
+i++;
+E();
+if(s[i]==')')
+i++;
+else
+error();
+
+}
+else if(s[i]=='d')
+
+i++;
+else
+error();
+}
+
+void error()
+{
+printf("stirng is invalid");
+getch();
+exit(0);
+}
