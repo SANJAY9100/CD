@@ -1,0 +1,67 @@
+#include<stdio.h>
+#include<conio.h>
+int i=0;
+char s[10];
+void S();
+void A();
+void B();
+void error();
+void main()
+{
+clrscr();
+printf("\n given grammar is \n");
+printf("S->aBb/ccA \n");
+printf("A->b/c\n");
+printf("B->a/b\n");
+printf("\n enter string\n");
+scanf("%s",&s);
+S();
+if(s[i]==NULL)
+printf("\n string is valid\n");
+else
+printf("string is invalid\n");
+getch();
+}
+void S()
+{
+if(s[i]=='a')
+{
+i++;
+B();
+if(s[i]=='b')
+i++;
+else
+error();
+}
+else if(s[i]=='c')
+{
+i++;
+if(s[i]=='c')
+{
+i++;
+A();
+}
+else
+error();
+}
+}
+void A()
+{
+if(s[i]=='b'||s[i]=='c')
+i++;
+else
+error();
+}
+void B()
+{
+if(s[i]=='a'||s[i]=='b')
+i++;
+else
+error();
+}
+void error()
+{
+printf("\n string is invalid\n");
+getch();
+exit(0);
+}
